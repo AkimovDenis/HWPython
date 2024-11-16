@@ -1,0 +1,22 @@
+class Solution:
+    def minLen(self, strs: List[str]) -> int:
+        minLen = len(strs[0])
+        for i in range(1, len(strs)):
+            if len(strs[i]) < minLen:
+                minLen = len(strs[i])
+        return minLen
+    
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs:
+            return ""
+
+        minLength = self.minLen(strs)
+        prefix = ""
+
+        for j in range(minLength):
+            letter = strs[0][j]
+            for i in range(1, len(strs)):
+                if strs[i][j] != letter:
+                    return prefix
+            prefix += letter
+        return prefix
