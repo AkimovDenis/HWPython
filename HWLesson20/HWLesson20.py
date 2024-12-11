@@ -17,7 +17,7 @@ def create_file_with_random_number(filename):
 # б) Запустите циклом 1000 таких функций, а также замерьте время. 
 def sequential_execution():
     start_time = time.time()
-    for i in range(30):
+    for i in range(1000):
         create_file_with_random_number(f"file_{i + 1}.txt")
     end_time = time.time()
     print(f"Последовательное выполнение заняло {end_time - start_time:.2f} секунд.")
@@ -27,7 +27,7 @@ def sequential_execution():
 def multithreaded_execution():
     start_time = time.time()
     threads = []
-    for i in range(100):
+    for i in range(1000):
         thread = Thread(target = create_file_with_random_number, args=(f"file_{i + 1}.txt",))
         threads.append(thread)
         thread.start()
